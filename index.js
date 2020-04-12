@@ -18,14 +18,15 @@ client.on('message', message => {
         collector.on('collect', (reaction, collector) => {
             reactions += 1;
             if (reactions === 3) {
-                message.delete()
-                    .then(message => {
+                message.delete().then((message) => {
                         const channel = client.channels.cache.get(config.log);
                         const embed = new Discord.MessageEmbed()
-                            .setTitle("Message Archived")
                             .setColor("#2F8ED4")
-                            .addField("Author", message.author, true)
-                            .addField("Message", message.content, true)
+                            .setAuthor(message.author.username, message.author.avatarURL())
+                            .setDescription(message.content)
+                            .addField("From", message.channel, true)
+                            .setFooter("✅ complete")
+                            .setTimestamp(Date.now())
                         channel.send(embed);
                     });
             }
