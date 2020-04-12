@@ -14,10 +14,8 @@ client.on('message', message => {
         message.react('✅');
         const filter = (reaction, user) => reaction.emoji.name === "✅";
         let collector = message.createReactionCollector(filter);
-        var reactions = 0;
         collector.on('collect', (reaction, collector) => {
-            reactions += 1;
-            if (reactions === 3) {
+            if (reaction.count === 3) {
                 message.delete().then((message) => {
                         const channel = client.channels.cache.get(config.log);
                         const embed = new Discord.MessageEmbed()
