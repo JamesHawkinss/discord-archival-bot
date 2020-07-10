@@ -1,4 +1,4 @@
-# reaction-bot
+# archival-bot
 
 This bot was made to archive messages.
 
