@@ -23,7 +23,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
             return;
         }
     }
-    if (reaction.emoji.name = "✅" && reaction.count === 2 && config.channels.includes(reaction.message.channel.id)) {
+    if (reaction.emoji.name == "✅" && reaction.count === 2 && config.channels.includes(reaction.message.channel.id)) {
         const reactorUsername = user.username;
         reaction.message.delete()
             .then((reaction, user => {
